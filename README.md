@@ -1,1 +1,1 @@
-# NopCommerce plugin for functional tests
+# NopCommerce plugin for functional tests (version 4.60)
