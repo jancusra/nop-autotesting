@@ -3,8 +3,6 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using KSystem.Nop.Core.Services;
-
     using global::Nop.Core;
     using global::Nop.Core.Domain.Catalog;
     using global::Nop.Services.Seo;

@@ -8,7 +8,6 @@
     using KSystem.Nop.Plugin.Misc.AutoTesting.Domain;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingTasks;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Services;
-    using KSystem.Nop.Plugin.Misc.AutoTesting.Shared;
 
     using global::Nop.Services.Localization;
     using global::Nop.Services.Messages;

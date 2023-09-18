@@ -9,7 +9,6 @@
     using KSystem.Nop.Plugin.Misc.AutoTesting.Enums;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Models;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Services;
-    using KSystem.Nop.Plugin.Misc.AutoTesting.Shared;
 
     using global::Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 

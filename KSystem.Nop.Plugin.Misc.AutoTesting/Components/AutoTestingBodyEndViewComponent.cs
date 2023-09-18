@@ -8,7 +8,6 @@
     using KSystem.Nop.Plugin.Misc.AutoTesting.Factories;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Infrastructure;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Models;
-    using KSystem.Nop.Plugin.Misc.AutoTesting.Shared;
 
     using global::Nop.Web.Framework.Components;
     using global::Nop.Web.Framework.Infrastructure;

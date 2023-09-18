@@ -6,6 +6,7 @@
 
     using KSystem.Nop.Plugin.Misc.AutoTesting.Domain;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Enums;
+    using KSystem.Nop.Plugin.Misc.AutoTesting.Extensions;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingPages;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Services;
 

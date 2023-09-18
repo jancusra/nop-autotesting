@@ -1,4 +1,4 @@
-﻿namespace KSystem.Nop.Plugin.Misc.AutoTesting.Enums
+﻿namespace KSystem.Nop.Plugin.Misc.AutoTesting.Extensions
 {
     using System;
     using System.Collections.Generic;

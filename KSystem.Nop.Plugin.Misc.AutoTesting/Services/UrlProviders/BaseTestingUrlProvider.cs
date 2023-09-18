@@ -5,8 +5,6 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using KSystem.Nop.Plugin.Misc.AutoTesting.Shared;
-
     using global::Nop.Core;
     using global::Nop.Services.Seo;
 

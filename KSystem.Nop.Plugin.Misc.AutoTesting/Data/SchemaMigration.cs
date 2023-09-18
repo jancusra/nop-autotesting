@@ -4,42 +4,31 @@
 
     using KSystem.Nop.Plugin.Misc.AutoTesting.Domain;
 
+    using global::Nop.Data.Extensions;
     using global::Nop.Data.Migrations;
 
-    [SkipMigrationOnUpdate]
-    [NopMigration("2022/08/10 15:00:00", "Misc.AutoTesting base schema")]
-    public class SchemaMigration : Migration
+    [NopMigration("2023/09/18 23:00:00:0000000", "Misc.AutoTesting base schema", MigrationProcessType.Installation)]
+    public class SchemaMigration : AutoReversingMigration
     {
-        protected IMigrationManager _migrationManager;
-
-        public SchemaMigration(IMigrationManager migrationManager)
-        {
-            _migrationManager = migrationManager;
-        }
-
         public override void Up()
         {
             if (!Schema.Table(TableDefaults.TestingPageTable).Exists())
-                _migrationManager.BuildTable<TestingPage>(Create);
+                Create.TableFor<TestingPage>();
 
             if (!Schema.Table(TableDefaults.TestingCommandTable).Exists())
-                _migrationManager.BuildTable<TestingCommand>(Create);
+                Create.TableFor<TestingCommand>();
 
             if (!Schema.Table(TableDefaults.TestingTaskTable).Exists())
-                _migrationManager.BuildTable<TestingTask>(Create);
+                Create.TableFor<TestingTask>();
 
             if (!Schema.Table(TableDefaults.TestingTaskPageMapTable).Exists())
-                _migrationManager.BuildTable<TestingTaskPageMap>(Create);
+                Create.TableFor<TestingTaskPageMap>();
 
             if (!Schema.Table(TableDefaults.ExecutedTaskTable).Exists())
-                _migrationManager.BuildTable<ExecutedTask>(Create);
+                Create.TableFor<ExecutedTask>();
 
             if (!Schema.Table(TableDefaults.ReportedMessageTable).Exists())
-                _migrationManager.BuildTable<ReportedMessage>(Create);
-        }
-
-        public override void Down()
-        {
+                Create.TableFor<ReportedMessage>();
         }
     }
 }
