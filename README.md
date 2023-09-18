@@ -1,1 +1,1 @@
-# nop-autotesting
+# NopCommerce plugin for functional tests
