@@ -1,0 +1,38 @@
+﻿@using KSystem.Nop.Plugin.Misc.AutoTesting.Models.TaskReports
+@model ReportedMessageSearchModel
+
+<section class="content">
+    <div class="card-group">
+        <div class="card card-default">
+            <div class="card-body">
+                @await Html.PartialAsync("Table", new DataTablesModel
+                {
+                   Name = "reported-messages-grid",
+                   UrlRead = new DataUrl("GridListOfMessages", "TaskReports", 
+                        new RouteValueDictionary(new { executedTaskId = Model.ExecutedTaskId })),
+                   Length = Model.PageSize,
+                   LengthMenu = Model.AvailablePageSizes,
+                   ColumnCollection = new List<ColumnProperty>
+                   {
+                        new ColumnProperty(nameof(ReportedMessageModel.PageName))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.PageName").Text
+                        },
+                        new ColumnProperty(nameof(ReportedMessageModel.Message))
+                        {
+                            Title = T("Admin.System.Log.List.Message").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(ReportedMessageModel.Success))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.Success").Text,
+                            Width = "200",
+                            ClassName =  NopColumnClassDefaults.CenterAll,
+                            Render = new RenderBoolean()
+                        }
+                    }
+                })
+            </div>
+        </div>
+    </div>
+</section>

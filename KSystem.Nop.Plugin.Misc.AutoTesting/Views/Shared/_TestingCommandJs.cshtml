@@ -1,0 +1,163 @@
+﻿@using KSystem.Nop.Plugin.Misc.AutoTesting.Enums
+@using KSystem.Nop.Plugin.Misc.AutoTesting.Models
+@model TestingCommandWidgetModel
+
+@switch (Model.CommandType)
+{
+    case CommandType.ElementsExists:
+        {
+            <text>
+                if ($('@Html.Raw(Model.Selector)').length > 0) {
+                    window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                } else {
+                    window.autoTestingReports.push({ message: '@Model.Message', success: false });
+                }
+            </text>
+            break;
+        }
+    case CommandType.ElementsExistsInCount:
+        {
+            <text>
+                if ($('@Html.Raw(Model.Selector)').length == parseInt('@Model.Value')) {
+                    window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                } else {
+                    window.autoTestingReports.push({ message: '@Model.Message', success: false });
+                }
+            </text>
+            break;
+        }
+    case CommandType.ElementHasClass:
+        {
+            <text>
+                if ('@Model.Selector' == "target") {
+                    if ($(e.target).hasClass('@Html.Raw(Model.Value)')) {
+                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                    }
+                } else {
+                    if ($('@Html.Raw(Model.Selector)').hasClass('@Html.Raw(Model.Value)')) {
+                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                    }
+                }
+            </text>
+            break;
+        }
+    case CommandType.ElementProperty:
+        {
+            <text>
+                if ('@Model.Selector' == "target") {
+                    if ($(e.target).prop('@Html.Raw(Model.Name)').toLowerCase() == '@Html.Raw(Model.Value)') {
+                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                    }
+                } else {
+                    if ($('@Html.Raw(Model.Selector)').prop('@Html.Raw(Model.Name)').toLowerCase() == '@Html.Raw(Model.Value)') {
+                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                    }
+                }
+            </text>
+            break;
+        }
+    case CommandType.Click:
+        {
+            <text>
+                if ($('@Html.Raw(Model.Selector)').length > 0) {
+                    $('@Html.Raw(Model.Selector)').click();
+                }
+            </text>
+            break;
+        }
+    case CommandType.FillInput:
+        {
+            <text>
+                $('@Html.Raw(Model.Selector)').val('@Html.Raw(Model.Value)').trigger("input");
+            </text>
+            break;
+        }
+    case CommandType.ValidateInput:
+        {
+            <text>
+                if ($('@Html.Raw(Model.Selector)').length > 0 
+                    && $('@Html.Raw(Model.Selector)').val() == '@Html.Raw(Model.Value)') {
+                    window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                }
+            </text>
+            break;
+        }
+    case CommandType.ChangeDropDownValue:
+        {
+            if (Model.Value == "null")
+            {
+                <text>
+                    $('@Html.Raw(Model.Selector)').val(null).change();
+                </text>
+            }
+            else
+            {
+                <text>
+                    $('@Html.Raw(Model.Selector)').val('@Html.Raw(Model.Value)').change();
+                </text>
+            }
+            break;
+        }
+    case CommandType.ChangeDropDownToSomeValue:
+        {
+            <text>
+                if ($('@Html.Raw(Model.Selector)').length > 0 && !$('@Html.Raw(Model.Selector)').val()) {
+                    $("@Html.Raw(Model.Selector) option").each(function () {
+                        if (this.value) {
+                            $('@Html.Raw(Model.Selector)').val(this.value).change();
+                            return false;
+                        }
+                    });
+                }
+            </text>
+            break;
+        }
+    case CommandType.SwitchToNextPage:
+        {
+            if (!string.IsNullOrEmpty(Model.Selector))
+            {
+                <text>
+                    setTimeout(function () {
+                        $.post(window.location.origin + "/AutoTesting/SaveTestingPageReportMessages", 
+                            { pageId: parseInt('@Model.PageId'), reports: window.autoTestingReports }, 
+                            function (data) {
+                                location.href = '@Html.Raw(Model.Selector)';
+                            });
+                    }, 1000);
+                </text>
+            }
+            break;
+        }
+    case CommandType.SendReportToServer:
+        {
+            <text>
+                setTimeout(function () {
+                    $.post(window.location.origin + "/AutoTesting/SaveTestingPageReportMessages", 
+                        { pageId: parseInt('@Model.PageId'), reports: window.autoTestingReports }, 
+                        function (data) { });
+                }, 1000);
+            </text>
+            break;
+        }
+    case CommandType.ClearShoppingCart:
+        {
+            <text>
+                setTimeout(function () {
+                    $.post(window.location.origin + "/AutoTesting/ClearShoppingCart", 
+                        function (data) { });
+                }, 1000);
+            </text>
+            break;
+        }
+    case CommandType.DeleteLastProfileAddress:
+        {
+            <text>
+                setTimeout(function () {
+                    $.post(window.location.origin + "/AutoTesting/DeleteLastProfileAddress", 
+                        function (data) { });
+                }, 1000);
+            </text>
+            break;
+        }
+    default: break;
+}

@@ -1,0 +1,100 @@
+﻿@using KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingPages
+@model TestingCommandSearchModel
+
+<section class="content">
+    <div class="card-group">
+        <div class="card card-default">
+            <div class="card-body">
+                @await Html.PartialAsync("Table", new DataTablesModel
+                {
+                   Name = "testing-commands-grid",
+                   UrlRead = new DataUrl("GridList", "TestingCommands",
+                        new RouteValueDictionary(new { testingPageId = Model.TestingPageId })),
+                   UrlDelete = new DataUrl("Delete", "TestingCommands", null),
+                   Length = Model.PageSize,
+                   LengthMenu = Model.AvailablePageSizes,
+                   ColumnCollection = new List<ColumnProperty>
+                        {
+                        new ColumnProperty(nameof(TestingCommandModel.CommandTypeId))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.CommandType").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll,
+                            Render = new RenderCustom("getCommandName")
+                        },
+                        new ColumnProperty(nameof(TestingCommandModel.Selector))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.Selector").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(TestingCommandModel.Name))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.Name").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(TestingCommandModel.Value))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.Value").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(TestingCommandModel.Message))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.Message").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(TestingCommandModel.CommandOrder))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.CommandOrder").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(TestingCommandModel.Id))
+                        {
+                            Title = T("Admin.Common.Edit").Text,
+                            Width = "150",
+                            ClassName =  NopColumnClassDefaults.Button,
+                            Render = new RenderCustom("renderEditButton")
+                        },
+                        new ColumnProperty(nameof(TestingCommandModel.Id))
+                        {
+                            Title = T("Admin.Common.Delete").Text,
+                            Width = "150",
+                            ClassName =  NopColumnClassDefaults.Button,
+                            Render = new RenderButtonRemove(T("Admin.Common.Delete").Text)
+                        }
+                    }
+                })
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary"
+                   href="javascript:OpenWindow('@Url.Action("CreateOrUpdate", "TestingCommands")?testingPageId=@Model.TestingPageId&amp;btnId=refreshCommandsList&amp;', 800, 500, true);">
+                    <i class="fas fa-plus-square"></i>
+                    @T("KSystem.Nop.Plugin.Misc.AutoTesting.Views.AddNewCommand")
+                </a>
+            </div>
+            <div>
+                <button type="submit" id="refreshCommandsList" style="display: none;"></button>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#refreshCommandsList').click(function () {
+                            updateTable('#testing-commands-grid');
+                            return false;
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    function getCommandName(data, type, row, meta) {
+        return row.CommandTypeName;
+    }
+
+    function renderEditButton(data, type, row, meta) {
+        return '<button class="btn btn-default" onclick="OpenWindow(\'@Url.Action("CreateOrUpdate", "TestingCommands")/'
+            + row.Id + '?testingPageId=@Model.TestingPageId&btnId=refreshCommandsList\', 800, 500, true);return false;" title="@T("Admin.Common.Edit")">'
+            + '<i class="fas fa-pencil-alt"></i>'
+            + '@T("Admin.Common.Edit")'
+            + '</button>';
+    }
+</script>

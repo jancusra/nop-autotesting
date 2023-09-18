@@ -1,0 +1,60 @@
+﻿@using KSystem.Nop.Plugin.Misc.AutoTesting.Models
+@model TestingWidgetModel
+
+<script type="text/javascript" asp-location="Footer">
+    window.autoTestingReports = [];
+</script>
+
+@if (Model.BaseTestingCommands.Count > default(int))
+{
+    <script type="text/javascript" asp-location="Footer">
+        window.onload = function () {
+            setTimeout(function () {
+                @foreach (var baseTestingCommand in Model.BaseTestingCommands)
+                {
+                    @await Html.PartialAsync("_TestingCommandJs", baseTestingCommand)
+                }
+            }, 1000);
+        };
+    </script>
+}
+
+@foreach (var ajaxTestingCommand in Model.AjaxTestingCommands)
+{
+    <script type="text/javascript" asp-location="Footer">
+        $(document).ajaxComplete(function (event, xhr, settings) {
+        @if (!string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Selector) && !string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Name)
+            && !string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Value))
+            {<text>
+            if (settings.url.includes('@ajaxTestingCommand.BaseCommand.Selector')) {
+                var params = JSON.parse('{"' + decodeURI(settings.data.replace(/&/g, "\",\"").replace(/=/g, "\":\"")) + '"}');
+                if (params && params.hasOwnProperty('@ajaxTestingCommand.BaseCommand.Name')
+                    && params['@ajaxTestingCommand.BaseCommand.Name'] == '@ajaxTestingCommand.BaseCommand.Value') {
+            </text>}
+        else {<text>
+            if (settings.url.includes('@ajaxTestingCommand.BaseCommand.Selector')) {
+                if (true) {
+            </text>}
+                    setTimeout(function () {
+                        @foreach(var testingCommand in ajaxTestingCommand.TestingCommands)
+                        {
+                            @await Html.PartialAsync("_TestingCommandJs", testingCommand)
+                        }
+                    }, 1000);
+                }
+            }
+        });
+    </script>
+}
+
+@foreach (var domNodeInsertedCommand in Model.DOMNodeInsertedTestingCommands)
+{
+    <script type="text/javascript" asp-location="Footer">
+        $(document).bind('DOMNodeInserted', function (e) {
+            @foreach(var testingCommand in domNodeInsertedCommand.TestingCommands)
+            {
+                @await Html.PartialAsync("_TestingCommandJs", testingCommand)
+            }
+        });
+    </script>
+}

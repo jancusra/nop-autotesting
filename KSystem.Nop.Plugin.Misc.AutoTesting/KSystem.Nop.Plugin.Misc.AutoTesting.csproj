@@ -1,0 +1,127 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Copyright>Copyright �  2022</Copyright>
+    <Company>K-system.CZ s.r.o.</Company>
+    <Authors>Rastislav Jančuš</Authors>
+    <Product>KSystem.Nop.Plugin.Misc.AutoTesting</Product>
+    <OutputPath>..\..\Presentation\Nop.Web\Plugins\KSystem.Nop.Plugin.Misc.AutoTesting</OutputPath>
+    <OutDir>$(OutputPath)</OutDir>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="logo.png" />
+    <None Remove="Views\AutoTestingPlugin\Configure.cshtml" />
+    <None Remove="Views\AutoTestingPlugin\_Configure.Robot.cshtml" />
+    <None Remove="Views\Shared\Components\AutoTestingBodyEnd\Default.cshtml" />
+    <None Remove="Views\Shared\_TestingCommandJs.cshtml" />
+    <None Remove="Views\TaskReports\Detail.cshtml" />
+    <None Remove="Views\TaskReports\List.cshtml" />
+    <None Remove="Views\TaskReports\_ListOfMessages.cshtml" />
+    <None Remove="Views\TestingCommands\CreateOrUpdate.cshtml" />
+    <None Remove="Views\TestingPages\Create.cshtml" />
+    <None Remove="Views\TestingPages\Edit.cshtml" />
+    <None Remove="Views\TestingPages\List.cshtml" />
+    <None Remove="Views\TestingPages\_CreateOrUpdate.Commands.cshtml" />
+    <None Remove="Views\TestingPages\_CreateOrUpdate.Common.cshtml" />
+    <None Remove="Views\TestingPages\_CreateOrUpdate.cshtml" />
+    <None Remove="Views\TestingTaskPages\AddOrUpdate.cshtml" />
+    <None Remove="Views\TestingTasks\Create.cshtml" />
+    <None Remove="Views\TestingTasks\Edit.cshtml" />
+    <None Remove="Views\TestingTasks\List.cshtml" />
+    <None Remove="Views\TestingTasks\_CreateOrUpdate.Common.cshtml" />
+    <None Remove="Views\TestingTasks\_CreateOrUpdate.cshtml" />
+    <None Remove="Views\TestingTasks\_CreateOrUpdate.Pages.cshtml" />
+    <None Remove="Views\_ViewImports.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\AutoTestingPlugin\Configure.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\AutoTestingPlugin\_Configure.Robot.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\Components\AutoTestingBodyEnd\Default.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\Shared\_TestingCommandJs.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TaskReports\Detail.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TaskReports\List.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TaskReports\_ListOfMessages.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingCommands\CreateOrUpdate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingPages\Create.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingPages\Edit.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingPages\List.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingPages\_CreateOrUpdate.Common.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingPages\_CreateOrUpdate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingPages\_CreateOrUpdate.Commands.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingTaskPages\AddOrUpdate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingTasks\Create.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingTasks\Edit.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingTasks\List.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingTasks\_CreateOrUpdate.Common.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingTasks\_CreateOrUpdate.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\TestingTasks\_CreateOrUpdate.Pages.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KSystem.Nop.Core\KSystem.Nop.Core.csproj" />
+    <ProjectReference Include="..\KSystem.Nop.Plugin.Core\KSystem.Nop.Plugin.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="plugin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- This target execute after "Build" target -->
+  <Target Name="NopTarget" AfterTargets="Build">
+    <!-- Delete unnecessary libraries from plugins path -->
+    <MSBuild Projects="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
+  </Target>
+</Project>

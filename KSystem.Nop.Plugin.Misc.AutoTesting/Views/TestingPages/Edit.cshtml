@@ -1,0 +1,43 @@
+﻿@using Nop.Web.Framework.UI
+@model KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingPages.TestingPageModel
+
+@{
+    Layout = "_AdminLayout";
+
+    Html.SetActiveMenuItemSystemName("KSystem.AutoTesting.TestingPages");
+}
+
+<form asp-controller="TestingPages" asp-action="Edit" method="post">
+    <div class="content-header clearfix">
+        <h1 class="float-left">
+            @T("KSystem.Nop.Plugin.Misc.AutoTesting.TestingPages") -
+            @if (Model.Id > default(int))
+                {@Model.Name }
+            else
+                { @T("KSystem.Nop.Plugin.Core.Views.AddNewRecordTitle")}
+            <small><i class="fa fa-arrow-circle-left"></i>@Html.ActionLink(T("KSystem.Nop.Plugin.Core.Views.BackToList").Text, "List")</small>
+        </h1>
+        <div class="float-right">
+            <button type="submit" name="save" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                @T("Admin.Common.Save")
+            </button>
+            <button type="submit" name="save-continue" class="btn btn-primary">
+                <i class="far fa-save"></i>
+                @T("Admin.Common.SaveContinue")
+            </button>
+            <button type="submit" class="btn btn-success" id="copy-test-page" name="copy-test-page">
+                <i class="far fa-copy"></i>
+                @T("KSystem.Nop.Plugin.Core.Copy")
+            </button>
+            <span id="testingpages-delete" class="btn bg-red">
+                <i class="fas fa-trash"></i>
+                @T("Admin.Common.Delete")
+            </span>
+            <nop-action-confirmation asp-model-id="@Model.Id" asp-button-id="copy-test-page" asp-additional-confirm="KSystem.Nop.Plugin.Core.CopyItemMessage" />
+        </div>
+    </div>
+    @await Html.PartialAsync("_CreateOrUpdate", Model)
+</form>
+
+<nop-delete-confirmation asp-model-id="@Model.Id" asp-button-id="testingpages-delete" />

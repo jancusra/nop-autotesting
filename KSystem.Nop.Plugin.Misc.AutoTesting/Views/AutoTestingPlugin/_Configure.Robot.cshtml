@@ -1,0 +1,13 @@
+﻿@model KSystem.Nop.Plugin.Misc.AutoTesting.Models.AutoTestingConfigureModel
+
+<div class="card-body">
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="EnabledAutoTestingRobot" />
+        </div>
+        <div class="col-md-9">
+            <nop-editor asp-for="EnabledAutoTestingRobot" />
+            <span asp-validation-for="EnabledAutoTestingRobot"></span>
+        </div>
+    </div>
+</div>

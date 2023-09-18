@@ -1,0 +1,40 @@
+﻿@model KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingPages.TestingPageModel
+
+<div class="card-body">
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="Name" />
+        </div>
+        <div class="col-md-9">
+            <nop-editor asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="TestingUrl" />
+        </div>
+        <div class="col-md-9">
+            <nop-editor asp-for="TestingUrl" />
+            <span asp-validation-for="TestingUrl"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="CustomUrlProvider" />
+        </div>
+        <div class="col-md-9">
+            <nop-editor asp-for="CustomUrlProvider" />
+            <span asp-validation-for="CustomUrlProvider"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-3">
+            <nop-label asp-for="ProviderParameters" />
+        </div>
+        <div class="col-md-9">
+            <nop-editor asp-for="ProviderParameters" />
+            <span asp-validation-for="ProviderParameters"></span>
+        </div>
+    </div>
+</div>

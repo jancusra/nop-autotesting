@@ -1,0 +1,23 @@
+﻿@model KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingPages.TestingPageModel
+
+<div asp-validation-summary="All"></div>
+<input asp-for="Id" type="hidden" />
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="form-horizontal">
+            <nop-tabs id="testing-pages-edit">
+                <nop-tab asp-name="tab-common" asp-title="@T("Admin.Configuration.Settings.GeneralCommon")" asp-default="true">
+                    @await Html.PartialAsync("_CreateOrUpdate.Common", Model)
+                </nop-tab>
+
+                @if (!Model.IsModelCreate)
+                {
+                    <nop-tab asp-name="tab-list-of-commands" asp-title="@T("KSystem.Nop.Plugin.Misc.AutoTesting.Views.TestingCommands")">
+                        @await Html.PartialAsync("_CreateOrUpdate.Commands", Model.CommandSearchModel)
+                    </nop-tab>
+                }
+            </nop-tabs>
+        </div>
+    </div>
+</section>

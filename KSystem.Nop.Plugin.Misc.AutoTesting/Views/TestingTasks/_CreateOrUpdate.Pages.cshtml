@@ -1,0 +1,82 @@
+﻿@using KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingTasks
+@model TestingTaskPageSearchModel
+
+<section class="content">
+    <div class="card-group">
+        <div class="card card-default">
+            <div class="card-body">
+                @await Html.PartialAsync("Table", new DataTablesModel
+                {
+                   Name = "testing-task-pages-grid",
+                   UrlRead = new DataUrl("GridList", "TestingTaskPages",
+                        new RouteValueDictionary(new { testingTaskId = Model.TestingTaskId })),
+                   UrlDelete = new DataUrl("Delete", "TestingTaskPages", null),
+                   Length = Model.PageSize,
+                   LengthMenu = Model.AvailablePageSizes,
+                   ColumnCollection = new List<ColumnProperty>
+                        {
+                        new ColumnProperty(nameof(TestingTaskPageModel.PageName))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.PageName").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(TestingTaskPageModel.PageOrder))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.PageOrder").Text,
+                            ClassName =  NopColumnClassDefaults.CenterAll
+                        },
+                        new ColumnProperty(nameof(TestingTaskPageModel.IncludedInTask))
+                        {
+                            Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.IncludedInTask").Text,
+                            Width = "200",
+                            ClassName =  NopColumnClassDefaults.CenterAll,
+                            Render = new RenderBoolean()
+                        },
+                        new ColumnProperty(nameof(TestingTaskPageModel.Id))
+                        {
+                            Title = T("Admin.Common.Edit").Text,
+                            Width = "150",
+                            ClassName =  NopColumnClassDefaults.Button,
+                            Render = new RenderCustom("renderEditButton")
+                        },
+                        new ColumnProperty(nameof(TestingTaskPageModel.Id))
+                        {
+                            Title = T("Admin.Common.Delete").Text,
+                            Width = "150",
+                            ClassName =  NopColumnClassDefaults.Button,
+                            Render = new RenderButtonRemove(T("Admin.Common.Delete").Text)
+                        }
+                    }
+                })
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary"
+                   href="javascript:OpenWindow('@Url.Action("AddOrUpdate", "TestingTaskPages")?testingTaskId=@Model.TestingTaskId&amp;btnId=refreshPagesList&amp;', 800, 300, true);">
+                    <i class="fas fa-plus-square"></i>
+                    @T("KSystem.Nop.Plugin.Misc.AutoTesting.Views.AddExistingPage")
+                </a>
+            </div>
+            <div>
+                <button type="submit" id="refreshPagesList" style="display: none;"></button>
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $('#refreshPagesList').click(function () {
+                            updateTable('#testing-task-pages-grid');
+                            return false;
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    function renderEditButton(data, type, row, meta) {
+        return '<button class="btn btn-default" onclick="OpenWindow(\'@Url.Action("AddOrUpdate", "TestingTaskPages")/'
+            + row.Id + '?testingTaskId=@Model.TestingTaskId&btnId=refreshPagesList\', 800, 300, true);return false;" title="@T("Admin.Common.Edit")">'
+            + '<i class="fas fa-pencil-alt"></i>'
+            + '@T("Admin.Common.Edit")'
+            + '</button>';
+    }
+</script>
