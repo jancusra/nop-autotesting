@@ -55,7 +55,7 @@
 
         public virtual async Task<IActionResult> List()
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -70,7 +70,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> GridList(TestingTaskSearchModel searchModel)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return await AccessDeniedDataTablesJson();
             }
@@ -90,7 +90,7 @@
 
         public virtual async Task<IActionResult> Create()
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -107,7 +107,7 @@
         [ParameterBasedOnFormName("save-continue", "continueEditing")]
         public virtual async Task<IActionResult> Create(TestingTaskModel model, bool continueEditing)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -130,7 +130,7 @@
 
         public virtual async Task<IActionResult> Edit(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -152,7 +152,7 @@
         [FormValueRequired("save", "save-continue")]
         public virtual async Task<IActionResult> Edit(TestingTaskModel model, bool continueEditing)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -184,7 +184,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -197,7 +197,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> DeleteTestingTask(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return await AccessDeniedDataTablesJson();
             }

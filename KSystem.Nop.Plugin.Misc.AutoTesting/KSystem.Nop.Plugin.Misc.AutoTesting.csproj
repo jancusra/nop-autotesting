@@ -1,7 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
+  
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Copyright>Copyright �  2022</Copyright>
+    <TargetFramework>net7.0</TargetFramework>
+    <Copyright>Copyright �  2023</Copyright>
     <Company>K-system.CZ s.r.o.</Company>
     <Authors>Rastislav Jančuš</Authors>
     <Product>KSystem.Nop.Plugin.Misc.AutoTesting</Product>
@@ -109,19 +110,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\KSystem.Nop.Core\KSystem.Nop.Core.csproj" />
-    <ProjectReference Include="..\KSystem.Nop.Plugin.Core\KSystem.Nop.Plugin.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="plugin.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Presentation\Nop.Web\Nop.Web.csproj" />
+  </ItemGroup>
+
   <!-- This target execute after "Build" target -->
   <Target Name="NopTarget" AfterTargets="Build">
     <!-- Delete unnecessary libraries from plugins path -->
-    <MSBuild Projects="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
+    <MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="NopClear" />
   </Target>
 </Project>

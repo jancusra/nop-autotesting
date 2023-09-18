@@ -37,7 +37,7 @@
 
         public virtual async Task<IActionResult> List()
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -52,7 +52,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> GridList(ExecutedTaskSearchModel searchModel)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return await AccessDeniedDataTablesJson();
             }
@@ -78,7 +78,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> GridListOfMessages(ReportedMessageSearchModel searchModel)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return await AccessDeniedDataTablesJson();
             }
@@ -99,7 +99,7 @@
 
         public virtual async Task<IActionResult> Detail(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -125,7 +125,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -138,7 +138,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> DeleteExecutedTask(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }

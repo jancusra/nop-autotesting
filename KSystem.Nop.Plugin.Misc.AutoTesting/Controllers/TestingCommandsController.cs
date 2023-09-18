@@ -4,7 +4,6 @@
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
 
-    using KSystem.Nop.Core.Extensions;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Domain;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Enums;
     using KSystem.Nop.Plugin.Misc.AutoTesting.Models.TestingPages;
@@ -47,14 +46,14 @@
         [HttpPost]
         public virtual async Task<IActionResult> GridList(TestingCommandSearchModel searchModel, int testingPageId)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return await AccessDeniedDataTablesJson();
             }
 
             var records = await _testingPageService.GetAllTestingCommandsByPageIdAsync(
                 testingPageId, searchModel.Page - 1, searchModel.PageSize);
-            var allCommandTypes = await CommandType.AjaxComplete.ToSelectList();
+            var allCommandTypes = CommandType.AjaxComplete.ToSelectList();
 
             var model = new TestingCommandGridModel().PrepareToGrid(searchModel, records, () =>
             {
@@ -73,7 +72,7 @@
 
         public virtual async Task<IActionResult> CreateOrUpdate(int id, int testingPageId)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -93,7 +92,7 @@
                 }
             }
 
-            model.AvailableCommandTypes = await CommandType.AjaxComplete.ToSelectList();
+            model.AvailableCommandTypes = CommandType.AjaxComplete.ToSelectList();
 
             return View(model);
         }
@@ -101,7 +100,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> CreateOrUpdate(TestingCommandModel model)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -117,7 +116,7 @@
                 return View(model);
             }
 
-            model.AvailableCommandTypes = await CommandType.AjaxComplete.ToSelectList();
+            model.AvailableCommandTypes = CommandType.AjaxComplete.ToSelectList();
 
             return View(model);
         }
@@ -125,7 +124,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }

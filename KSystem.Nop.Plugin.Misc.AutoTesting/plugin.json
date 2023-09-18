@@ -3,7 +3,7 @@
   "FriendlyName": "Configurable auto testing for NopCommerce platform",
   "SystemName": "KSystem.Nop.Plugin.Misc.AutoTesting",
   "Version": "1.00",
-  "SupportedVersions": [ "4.40" ],
+  "SupportedVersions": [ "4.60" ],
   "Author": "K-system.CZ s.r.o.",
   "DisplayOrder": 50,
   "FileName": "KSystem.Nop.Plugin.Misc.AutoTesting.dll"

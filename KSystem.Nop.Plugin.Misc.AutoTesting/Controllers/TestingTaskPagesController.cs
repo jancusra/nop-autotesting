@@ -41,7 +41,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> GridList(TestingTaskPageSearchModel searchModel)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return await AccessDeniedDataTablesJson();
             }
@@ -67,7 +67,7 @@
 
         public virtual async Task<IActionResult> AddOrUpdate(int id, int testingTaskId)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -95,7 +95,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> AddOrUpdate(TestingTaskPageModel model)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }
@@ -119,7 +119,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> Delete(int id)
         {
-            if (!await CanManagePluginsAsync(_permissionService))
+            if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManagePlugins))
             {
                 return AccessDeniedView();
             }

@@ -135,7 +135,6 @@
                     }
 
                     customer.IsTaxExempt = false;
-                    customer.IsCompanyCustomer = false;
                     await _customerService.UpdateCustomerAsync(customer);
                 }
 
