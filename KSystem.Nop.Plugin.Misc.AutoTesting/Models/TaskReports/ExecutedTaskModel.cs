@@ -18,10 +18,10 @@
         [NopResourceDisplayName("Admin.System.SeNames.Name")]
         public string TaskName { get; set; }
 
-        [NopResourceDisplayName("KSystem.Nop.Plugin.Core.Fields.LastRun")]
+        [NopResourceDisplayName("KSystem.Nop.Plugin.Misc.AutoTesting.LastRun")]
         public DateTime LastRun { get; set; }
 
-        [NopResourceDisplayName("KSystem.Nop.Plugin.Core.Fields.LastFinish")]
+        [NopResourceDisplayName("KSystem.Nop.Plugin.Misc.AutoTesting.LastFinish")]
         public DateTime? LastFinish { get; set; }
 
         public ReportedMessageSearchModel MessageSearchModel { get; set; }
