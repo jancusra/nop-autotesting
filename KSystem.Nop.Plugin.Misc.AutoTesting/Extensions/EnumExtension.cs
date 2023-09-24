@@ -24,7 +24,7 @@
                 listItems.Add(new SelectListItem
                 {
                     Value = Convert.ToInt32(enumValue).ToString(),
-                    Text = enumObj.ToString()
+                    Text = enumValue.ToString()
                 });
             }
 
