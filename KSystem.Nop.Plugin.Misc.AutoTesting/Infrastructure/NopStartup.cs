@@ -31,7 +31,7 @@
 
             services.AddScoped<ILastExecutedTaskUrlProvider, LastExecutedTaskUrlProvider>();
 
-            services.AddScoped<IProductCustomService, ProductCustomService>();
+            // services.AddScoped<IProductCustomService, ProductCustomService>();
             services.AddScoped<ITestingPageService, TestingPageService>();
             services.AddScoped<ITestingTaskService, TestingTaskService>();
             services.AddScoped<ITaskReportService, TaskReportService>();

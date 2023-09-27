@@ -5,16 +5,17 @@
 
     using global::Nop.Core;
     using global::Nop.Core.Domain.Catalog;
+    using global::Nop.Services.Catalog;
     using global::Nop.Services.Seo;
 
     public class SimpleProductUrlProvider : BaseTestingUrlProvider, ISimpleProductUrlProvider
     {
-        private readonly IProductCustomService _productCustomService;
+        private readonly IProductService _productService;
 
         private readonly IStoreContext _storeContext;
 
         public SimpleProductUrlProvider(
-            IProductCustomService productCustomService,
+            IProductService productService,
             IUrlRecordService urlRecordService,
             IStoreContext storeContext,
             IWebHelper webHelper,
@@ -23,7 +24,7 @@
                   webHelper,
                   workContext)
         {
-            _productCustomService = productCustomService;
+            _productService = productService;
             _storeContext = storeContext;
         }
 
@@ -31,12 +32,12 @@
         {
             var currentStore = await _storeContext.GetCurrentStoreAsync();
 
-            var productIds = (await _productCustomService.SearchProductsAsync(
+            var productIds = (await _productService.SearchProductsAsync(
                 storeId: currentStore.Id,
                 productType: ProductType.SimpleProduct,
                 visibleIndividuallyOnly: true,
                 orderBy: ProductSortingEnum.CreatedOn
-            )).products.Select(x => x.Id).ToList();
+            )).Select(x => x.Id).ToList();
 
             var randomProductSeName = await base.SelectOneRandomSeNameByIdsAndTypeAsync(productIds, nameof(Product));
 

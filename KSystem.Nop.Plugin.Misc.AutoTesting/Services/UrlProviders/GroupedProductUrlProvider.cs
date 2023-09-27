@@ -5,16 +5,17 @@
 
     using global::Nop.Core;
     using global::Nop.Core.Domain.Catalog;
+    using global::Nop.Services.Catalog;
     using global::Nop.Services.Seo;
 
     public class GroupedProductUrlProvider : BaseTestingUrlProvider, IGroupedProductUrlProvider
     {
-        private readonly IProductCustomService _productCustomService;
+        private readonly IProductService _productService;
 
         private readonly IStoreContext _storeContext;
 
         public GroupedProductUrlProvider(
-            IProductCustomService productCustomService,
+            IProductService productService,
             IUrlRecordService urlRecordService,
             IStoreContext storeContext,
             IWebHelper webHelper,
@@ -23,7 +24,7 @@
                   webHelper,
                   workContext)
         {
-            _productCustomService = productCustomService;
+            _productService = productService;
             _storeContext = storeContext;
         }
 
@@ -34,15 +35,20 @@
             bool success = int.TryParse(base.GetQueryParameterByName(AutoTestingDefaults.ProductTemplateParameterName, parameters),
                     out productTemplateId);
 
-            var productIds = (await _productCustomService.SearchProductsAsync(
+            var products = (await _productService.SearchProductsAsync(
                 storeId: currentStore.Id,
                 productType: ProductType.GroupedProduct,
-                productTemplateId: productTemplateId > default(int) ? productTemplateId : null,
                 visibleIndividuallyOnly: true,
                 orderBy: ProductSortingEnum.CreatedOn
-            )).products.Select(x => x.Id).ToList();
+            )).ToList();
 
-            var randomProductSeName = await base.SelectOneRandomSeNameByIdsAndTypeAsync(productIds, nameof(Product));
+            if (productTemplateId > default(int))
+            {
+                products = products.Where(x => x.ProductTemplateId == productTemplateId).ToList();
+            }
+
+            var randomProductSeName = await base.SelectOneRandomSeNameByIdsAndTypeAsync(
+                products.Select(x => x.Id).ToList(), nameof(Product));
 
             if (!string.IsNullOrEmpty(randomProductSeName))
             {
