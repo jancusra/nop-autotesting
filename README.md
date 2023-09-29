@@ -6,8 +6,11 @@ Task can run on background and at the end will show final report by defined crit
 Plugin is available with SQL script for some sample data after a clean NopCommerce installation, so you can try him and study without much effort!  
 Principal functionality by injecting javascript and automatic tests by this plugin can be used for any project.  
 
-Quick guide how to:
+
+**Quick guide how to:**
 1. download and install NopCommerce, copy main plugin folder to /src/Plugins
 2. start NopCommerce from source code and install this plugin
 3. run script on database from folder here /KSystem.Nop.Plugin.Misc.AutoTesting/Sql/nop_splitstring_to_table.sql for some sample data
-4. now you can go to administration and run defined task (see live video preview below)  
+4. now you can go to administration and run defined task (see live video preview below)
+
+[![LIVE PREVIEW](https://img.youtube.com/vi/z-wg3fwAMlU/0.jpg)](https://www.youtube.com/watch?v=z-wg3fwAMlU)
