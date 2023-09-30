@@ -12,6 +12,9 @@
     using global::Nop.Web.Framework.Components;
     using global::Nop.Web.Framework.Infrastructure;
 
+    /// <summary>
+    /// Represents view component to inject auto testing javascript code
+    /// </summary>
     [ViewComponent(Name = "AutoTestingBodyEnd")]
     public class AutoTestingBodyEndViewComponent : NopViewComponent
     {
@@ -31,6 +34,14 @@
             _autoTestingSettings = autoTestingSettings;
         }
 
+        /// <summary>
+        /// Invoke view component
+        /// </summary>
+        /// <param name="widgetZone">Widget zone name</param>
+        /// <returns>
+        /// A task that represents the asynchronous operation
+        /// The task result contains the view component result
+        /// </returns>
         public async Task<IViewComponentResult> InvokeAsync(string widgetZone)
         {
             if (!_autoTestingSettings.EnabledAutoTestingRobot || widgetZone != PublicWidgetZones.BodyEndHtmlTagBefore)

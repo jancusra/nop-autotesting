@@ -5,7 +5,6 @@
 
     public record AutoTestingConfigureModel : BaseNopModel, ISettingsModel
     {
-        // Auto testing robot
         [NopResourceDisplayName("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.EnabledAutoTestingRobot")]
         public bool EnabledAutoTestingRobot { get; set; }
 

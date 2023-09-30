@@ -11,6 +11,9 @@
 
     using global::Nop.Core.Infrastructure.Mapper;
 
+    /// <summary>
+    /// Represents mapping configuration for domain models to DTO models
+    /// </summary>
     public class AutoTestingMapper : Profile, IOrderedMapperProfile
     {
         public int Order => 10;

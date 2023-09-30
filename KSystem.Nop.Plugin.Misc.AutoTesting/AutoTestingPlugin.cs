@@ -16,6 +16,9 @@
     using global::Nop.Web.Framework.Infrastructure;
     using global::Nop.Web.Framework.Menu;
 
+    /// <summary>
+    /// Represents autotesting plugin base definition
+    /// </summary>
     public class AutoTestingPlugin : BasePlugin, IMiscPlugin, IAdminMenuPlugin, IWidgetPlugin
     {
         private readonly IWebHelper _webHelper;
@@ -42,6 +45,9 @@
             return _webHelper.GetStoreLocation() + "Admin/AutoTestingPlugin/Configure";
         }
 
+        /// <summary>
+        /// Prepare administration menu items
+        /// </summary>
         public async Task ManageSiteMapAsync(SiteMapNode rootNode)
         {
             var ksystemRootNode = rootNode.ChildNodes.FirstOrDefault(x => x.SystemName == "KSystem.Root");
@@ -61,6 +67,9 @@
             ksystemRootNode.ChildNodes.Add(pluginMenuNode);
         }
 
+        /// <summary>
+        /// Install base items for plugin and prepare locale resources
+        /// </summary>
         public override async Task InstallAsync()
         {
             await base.InstallAsync();
@@ -102,16 +111,25 @@
             });
         }
 
+        /// <summary>
+        /// Unistall base items for plugin
+        /// </summary>
         public override async Task UninstallAsync()
         {
             await base.UninstallAsync();
         }
 
+        /// <summary>
+        /// Get base widget view component
+        /// </summary>
         public Type GetWidgetViewComponent(string widgetZone)
         {
             return typeof(AutoTestingBodyEndViewComponent);
         }
 
+        /// <summary>
+        /// Get list of allowed widget zones
+        /// </summary>
         public Task<IList<string>> GetWidgetZonesAsync()
         {
             return Task.FromResult<IList<string>>(new List<string> {
@@ -119,6 +137,9 @@
             });
         }
 
+        /// <summary>
+        /// Hide plugin in the list of widget zones
+        /// </summary>
         public bool HideInWidgetList => false;
     }
 }

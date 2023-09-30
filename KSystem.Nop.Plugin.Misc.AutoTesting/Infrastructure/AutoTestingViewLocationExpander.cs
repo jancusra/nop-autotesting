@@ -5,6 +5,9 @@
 
     using Microsoft.AspNetCore.Mvc.Razor;
 
+    /// <summary>
+    /// Represents location expander for razor views
+    /// </summary>
     public class AutoTestingViewLocationExpander : IViewLocationExpander
     {
         public IEnumerable<string> ExpandViewLocations(ViewLocationExpanderContext context, IEnumerable<string> viewLocations)

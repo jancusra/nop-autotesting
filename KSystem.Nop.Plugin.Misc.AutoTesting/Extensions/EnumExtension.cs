@@ -5,8 +5,16 @@
     using System.Linq;
     using Microsoft.AspNetCore.Mvc.Rendering;
 
+    /// <summary>
+    /// Helper class to execute operations with Enum
+    /// </summary>
     public static class EnumExtension
     {
+        /// <summary>
+        /// Enum conversion to select list
+        /// </summary>
+        /// <param name="enumObj">Specific enum</param>
+        /// <returns>Enum select list</returns>
         public static IList<SelectListItem> ToSelectList<TEnum>(this TEnum enumObj) where TEnum : struct
         {
             IList<SelectListItem> listItems = new List<SelectListItem>();

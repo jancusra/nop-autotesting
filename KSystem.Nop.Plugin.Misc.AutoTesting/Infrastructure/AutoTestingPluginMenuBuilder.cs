@@ -7,6 +7,9 @@
     using global::Nop.Services.Plugins;
     using global::Nop.Web.Framework.Menu;
 
+    /// <summary>
+    /// Represents administration menu builder for plugin
+    /// </summary>
     public class AutoTestingPluginMenuBuilder : IAutoTestingPluginMenuBuilder
     {
         private readonly ILocalizationService _localizationService;
@@ -15,6 +18,12 @@
         {
             _localizationService = localizationService;
         }
+
+        /// <summary>
+        /// Build administration menu structure
+        /// </summary>
+        /// <param name="pluginDescriptor">NOP plugin descriptor with data about a plugin</param>
+        /// <returns>Builded menu structure</returns>
         public async Task<SiteMapNode> BuildAsync(PluginDescriptor pluginDescriptor)
         {
             var pluginMenuItem = new SiteMapNode

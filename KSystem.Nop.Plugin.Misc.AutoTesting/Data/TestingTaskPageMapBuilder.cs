@@ -7,8 +7,15 @@
     using global::Nop.Data.Extensions;
     using global::Nop.Data.Mapping.Builders;
 
+    /// <summary>
+    /// Represents a Testing task page map builder
+    /// </summary>
     public class TestingTaskPageMapBuilder : NopEntityBuilder<TestingTaskPageMap>
     {
+        /// <summary>
+        /// Apply entity configuration
+        /// </summary>
+        /// <param name="table">Create table expression builder</param>
         public override void MapEntity(CreateTableExpressionBuilder table)
         {
             table

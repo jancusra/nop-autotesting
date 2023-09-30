@@ -6,8 +6,15 @@
 
     using global::Nop.Data.Mapping.Builders;
 
-    public class AutoPageCommandBuilder : NopEntityBuilder<TestingPage>
+    /// <summary>
+    /// Represents a Testing page entity builder
+    /// </summary>
+    public class TestingPageBuilder : NopEntityBuilder<TestingPage>
     {
+        /// <summary>
+        /// Apply entity configuration
+        /// </summary>
+        /// <param name="table">Create table expression builder</param>
         public override void MapEntity(CreateTableExpressionBuilder table)
         {
             

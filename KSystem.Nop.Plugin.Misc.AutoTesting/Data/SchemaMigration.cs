@@ -10,6 +10,9 @@
     [NopMigration("2023/09/18 23:00:00:0000000", "Misc.AutoTesting base schema", MigrationProcessType.Installation)]
     public class SchemaMigration : AutoReversingMigration
     {
+        /// <summary>
+        /// Collect the UP migration expressions
+        /// </summary>
         public override void Up()
         {
             if (!Schema.Table(TableDefaults.TestingPageTable).Exists())

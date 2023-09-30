@@ -12,6 +12,9 @@
 
     using global::Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
 
+    /// <summary>
+    /// Provides plugin view models preparations and validation
+    /// </summary>
     public class AutoTestingFactory : IAutoTestingFactory
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -30,6 +33,11 @@
             _testingTaskService = testingTaskService;
         }
 
+        /// <summary>
+        /// Prepare injected testing widget model
+        /// </summary>
+        /// <param name="testingTaskPageMapId">Testing task-page map identifier</param>
+        /// <returns>Prepared testing widget model</returns>
         public virtual async Task<TestingWidgetModel> PrepareTestingWidgetModelAsync(int testingTaskPageMapId)
         {
             var testingTaskPageMap = await _testingTaskService.GetTestingTaskPageMapByIdAsync(testingTaskPageMapId);
@@ -62,6 +70,12 @@
             return testingModel;
         }
 
+        /// <summary>
+        /// Validate task page and return widget model if OK
+        /// </summary>
+        /// <param name="testingTaskPageMapId">Testing task-page map identifier</param>
+        /// <param name="actualPath">actual testing URL path</param>
+        /// <returns>Prepared testing widget model</returns>
         public virtual async Task<TestingWidgetModel> ValidateTaskPageAndPrepareTestingWidgetModelAsync(int testingTaskPageMapId, string actualPath)
         {
             var testingTaskPageMap = await _testingTaskService.GetTestingTaskPageMapByIdAsync(testingTaskPageMapId);
@@ -80,6 +94,14 @@
             return testingModel;
         }
 
+        /// <summary>
+        /// Prepare some event section model (with all commands inside a section)
+        /// </summary>
+        /// <param name="startCommandType">command type for a section start</param>
+        /// <param name="endCommandType">command type for a section end</param>
+        /// <param name="testingTaskPageMap">Testing task-page map entity</param>
+        /// <param name="testingCommands">list of testing commands inside a section</param>
+        /// <param name="testingSectionModel">list of section models to fill by this method as a result</param>
         private async Task PrepareSectionTestingWidgetModelAsync(
             CommandType startCommandType,
             CommandType endCommandType,
@@ -128,6 +150,12 @@
             }
         }
 
+        /// <summary>
+        /// Prepare models for a base testing commands (defined before a events)
+        /// </summary>
+        /// <param name="testingModel">model to fill by this method as a result</param>
+        /// <param name="testingTaskPageMap">Testing task-page map entity</param>
+        /// <param name="testingCommands">list of base testing commands</param>
         private async Task PrepareBaseTestingCommandsWidgetModelAsync(
             TestingWidgetModel testingModel,
             TestingTaskPageMap testingTaskPageMap,
@@ -153,6 +181,11 @@
             }
         }
 
+        /// <summary>
+        /// Prepare the next page command model
+        /// </summary>
+        /// <param name="taskPageMap">Testing task-page map entity</param>
+        /// <returns>Prepared next page command model</returns>
         private async Task<TestingCommandWidgetModel> PrepareNextPageCommandModel(TestingTaskPageMap taskPageMap)
         {
             var nextTaskPageMap = await _testingTaskService.GetNextTestingTaskPageMapByMapAsync(taskPageMap);
