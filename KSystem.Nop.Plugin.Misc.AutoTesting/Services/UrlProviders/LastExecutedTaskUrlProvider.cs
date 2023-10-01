@@ -7,6 +7,9 @@
     using global::Nop.Core;
     using global::Nop.Services.Seo;
 
+    /// <summary>
+    /// Provides administration task report URL
+    /// </summary>
     public class LastExecutedTaskUrlProvider : BaseTestingUrlProvider, ILastExecutedTaskUrlProvider
     {
         private readonly ITaskReportService _taskReportService;
@@ -23,6 +26,11 @@
             _taskReportService = taskReportService;
         }
 
+        /// <summary>
+        /// Get administration URL for task report
+        /// </summary>
+        /// <param name="parameters">optional URL parameters</param>
+        /// <returns>testing URL</returns>
         public override async Task<string> GetTestingUrlAsync(string parameters = null)
         {
             var executedTask = await _taskReportService.GetLastExecutedTaskAsync();

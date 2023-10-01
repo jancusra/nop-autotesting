@@ -13,6 +13,9 @@
     using global::Nop.Services.Customers;
     using global::Nop.Services.Localization;
 
+    /// <summary>
+    /// Product custom service (by using ProductLoadAllPagedCustom SQL procedure)
+    /// </summary>
     public class ProductCustomService : IProductCustomService
     {
         private readonly CatalogSettings _catalogSettings;

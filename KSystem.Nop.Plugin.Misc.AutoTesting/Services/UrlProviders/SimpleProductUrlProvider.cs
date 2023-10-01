@@ -8,6 +8,9 @@
     using global::Nop.Services.Catalog;
     using global::Nop.Services.Seo;
 
+    /// <summary>
+    /// Provides random simple product URL
+    /// </summary>
     public class SimpleProductUrlProvider : BaseTestingUrlProvider, ISimpleProductUrlProvider
     {
         private readonly IProductService _productService;
@@ -28,6 +31,11 @@
             _storeContext = storeContext;
         }
 
+        /// <summary>
+        /// Get testing URL for one random simple product
+        /// </summary>
+        /// <param name="parameters">optional URL parameters</param>
+        /// <returns>testing URL</returns>
         public override async Task<string> GetTestingUrlAsync(string parameters = null)
         {
             var currentStore = await _storeContext.GetCurrentStoreAsync();

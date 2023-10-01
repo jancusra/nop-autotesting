@@ -6,6 +6,9 @@
     using global::Nop.Core;
     using global::Nop.Core.Domain.Catalog;
 
+    /// <summary>
+    /// Product custom service (by using ProductLoadAllPagedCustom SQL procedure)
+    /// </summary>
     public interface IProductCustomService
     {
         Task<(IPagedList<Product> products,

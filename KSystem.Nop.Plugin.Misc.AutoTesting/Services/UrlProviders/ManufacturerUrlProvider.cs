@@ -8,6 +8,9 @@
     using global::Nop.Services.Catalog;
     using global::Nop.Services.Seo;
 
+    /// <summary>
+    /// Provides random manufacturer catalog URL
+    /// </summary>
     public class ManufacturerUrlProvider : BaseTestingUrlProvider, IManufacturerUrlProvider
     {
         private readonly IManufacturerService _manufacturerService;
@@ -24,6 +27,11 @@
             _manufacturerService = manufacturerService;
         }
 
+        /// <summary>
+        /// Get testing URL for one random manufacturer
+        /// </summary>
+        /// <param name="parameters">optional URL parameters</param>
+        /// <returns>testing URL</returns>
         public override async Task<string> GetTestingUrlAsync(string parameters = null)
         {
             var manufacturerIds = (await _manufacturerService.GetAllManufacturersAsync()).Select(x => x.Id).ToList();

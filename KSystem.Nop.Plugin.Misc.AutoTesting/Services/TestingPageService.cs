@@ -10,6 +10,9 @@
     using global::Nop.Core;
     using global::Nop.Data;
 
+    /// <summary>
+    /// Testing page service - manage testing pages and their commands
+    /// </summary>
     public class TestingPageService : ITestingPageService
     {
         private readonly IServiceProvider _serviceProvider;
@@ -34,11 +37,21 @@
 
         #region Testing pages
 
+        /// <summary>
+        /// Get testing page by identifier
+        /// </summary>
+        /// <param name="testingPageId">testing page identifier</param>
+        /// <returns>testing page</returns>
         public virtual async Task<TestingPage> GetTestingPageByIdAsync(int testingPageId)
         {
             return await _testingPageRepository.Table.FirstOrDefaultAsync(x => x.Id == testingPageId);
         }
 
+        /// <summary>
+        /// Get testing URL by page identifier
+        /// </summary>
+        /// <param name="pageId">testing page identifier</param>
+        /// <returns>final testing URL</returns>
         public virtual async Task<string> GetTestingUrlByPageIdAsync(int pageId)
         {
             var testingPage = await GetTestingPageByIdAsync(pageId);
@@ -72,9 +85,14 @@
             return string.Empty;
         }
 
+        /// <summary>
+        /// Get parameter URL delimeter by actual address
+        /// </summary>
+        /// <param name="testingUrl">actual testing URL address</param>
+        /// <returns>parameter delimeter</returns>
         public virtual string GetTestingUrlParameterDelimeter(string testingUrl)
         {
-            if(testingUrl.Contains("?"))
+            if (testingUrl.Contains("?"))
             {
                 return "&";
             }
@@ -84,6 +102,12 @@
             }
         }
 
+        /// <summary>
+        /// Get all testing pages for a table
+        /// </summary>
+        /// <param name="pageIndex">index of the table page</param>
+        /// <param name="pageSize">number of entries per one page</param>
+        /// <returns>paged list of testing pages</returns>
         public virtual async Task<IPagedList<TestingPage>> GetAllTestingPagesAsync(int pageIndex = 0, int pageSize = int.MaxValue)
         {
             return new PagedList<TestingPage>(
@@ -92,6 +116,10 @@
                 .ToListAsync(), pageIndex, pageSize);
         }
 
+        /// <summary>
+        /// Add new or update testing page entry
+        /// </summary>
+        /// <param name="testingPageEntry">testing page entity</param>
         public virtual async Task SaveTestingPageEntryAsync(TestingPage testingPageEntry)
         {
             if (testingPageEntry.Id == default(int))
@@ -104,6 +132,10 @@
             }
         }
 
+        /// <summary>
+        /// Delete testing page by identifier
+        /// </summary>
+        /// <param name="testingPageEntryId">testing page identifier</param>
         public virtual async Task DeleteTestingPageEntryAsync(int testingPageEntryId)
         {
             var testingPageEntry = await GetTestingPageByIdAsync(testingPageEntryId);
@@ -118,11 +150,23 @@
 
         #region Testing commands
 
+        /// <summary>
+        /// Get testing command by identifier
+        /// </summary>
+        /// <param name="testingCommandId">testing command identifier</param>
+        /// <returns>testing command</returns>
         public virtual async Task<TestingCommand> GetTestingCommandByIdAsync(int testingCommandId)
         {
             return await _testingCommandRepository.Table.FirstOrDefaultAsync(x => x.Id == testingCommandId);
         }
 
+        /// <summary>
+        /// Get all testing commands by page identifier for a table
+        /// </summary>
+        /// <param name="testingPageId">testing page identifier</param>
+        /// <param name="pageIndex">index of the table page</param>
+        /// <param name="pageSize">number of entries per one page</param>
+        /// <returns>paged list of testing commands</returns>
         public virtual async Task<IPagedList<TestingCommand>> GetAllTestingCommandsByPageIdAsync(
             int testingPageId, 
             int pageIndex = 0,
@@ -135,6 +179,10 @@
                     .ToListAsync(), pageIndex, pageSize);
         }
 
+        /// <summary>
+        /// Add new or update testing command entry
+        /// </summary>
+        /// <param name="testingCommand">testing command entity</param>
         public virtual async Task SaveTestingCommandEntryAsync(TestingCommand testingCommand)
         {
             if (testingCommand.Id == default(int))
@@ -147,6 +195,10 @@
             }
         }
 
+        /// <summary>
+        /// Delete testing command by identifier
+        /// </summary>
+        /// <param name="testingCommandEntryId">testing command identifier</param>
         public virtual async Task DeleteTestingCommandEntryAsync(int testingCommandEntryId)
         {
             var testingCommandEntry = await GetTestingCommandByIdAsync(testingCommandEntryId);

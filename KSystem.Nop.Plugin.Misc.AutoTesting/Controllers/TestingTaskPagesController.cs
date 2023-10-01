@@ -124,7 +124,7 @@
                 return AccessDeniedView();
             }
 
-            await _testingTaskService.DeleteTestingTaskPageEntryAsync(id);
+            await _testingTaskService.DeleteTestingTaskPageMapEntryAsync(id);
 
             return new NullJsonResult();
         }

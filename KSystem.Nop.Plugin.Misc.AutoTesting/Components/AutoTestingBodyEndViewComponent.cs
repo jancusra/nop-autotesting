@@ -39,8 +39,7 @@
         /// </summary>
         /// <param name="widgetZone">Widget zone name</param>
         /// <returns>
-        /// A task that represents the asynchronous operation
-        /// The task result contains the view component result
+        /// Prepared testing widget model by task page URL parameter or session entry
         /// </returns>
         public async Task<IViewComponentResult> InvokeAsync(string widgetZone)
         {
