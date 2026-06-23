@@ -7,43 +7,43 @@
             <div class="card-body">
                 @await Html.PartialAsync("Table", new DataTablesModel
                 {
-                   Name = "testing-task-pages-grid",
-                   UrlRead = new DataUrl("GridList", "TestingTaskPages",
+                    Name = "testing-task-pages-grid",
+                    UrlRead = new DataUrl("GridList", "TestingTaskPages",
                         new RouteValueDictionary(new { testingTaskId = Model.TestingTaskId })),
-                   UrlDelete = new DataUrl("Delete", "TestingTaskPages", null),
-                   Length = Model.PageSize,
-                   LengthMenu = Model.AvailablePageSizes,
-                   ColumnCollection = new List<ColumnProperty>
+                    UrlDelete = new DataUrl("Delete", "TestingTaskPages", null),
+                    Length = Model.PageSize,
+                    LengthMenu = Model.AvailablePageSizes,
+                    ColumnCollection = new List<ColumnProperty>
                         {
                         new ColumnProperty(nameof(TestingTaskPageModel.PageName))
                         {
                             Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.PageName").Text,
-                            ClassName =  NopColumnClassDefaults.CenterAll
+                            ClassName = NopColumnClassDefaults.CenterAll
                         },
                         new ColumnProperty(nameof(TestingTaskPageModel.PageOrder))
                         {
                             Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.PageOrder").Text,
-                            ClassName =  NopColumnClassDefaults.CenterAll
+                            ClassName = NopColumnClassDefaults.CenterAll
                         },
                         new ColumnProperty(nameof(TestingTaskPageModel.IncludedInTask))
                         {
                             Title = T("KSystem.Nop.Plugin.Misc.AutoTesting.Fields.IncludedInTask").Text,
                             Width = "200",
-                            ClassName =  NopColumnClassDefaults.CenterAll,
+                            ClassName = NopColumnClassDefaults.CenterAll,
                             Render = new RenderBoolean()
                         },
                         new ColumnProperty(nameof(TestingTaskPageModel.Id))
                         {
                             Title = T("Admin.Common.Edit").Text,
                             Width = "150",
-                            ClassName =  NopColumnClassDefaults.Button,
+                            ClassName = NopColumnClassDefaults.Button,
                             Render = new RenderCustom("renderEditButton")
                         },
                         new ColumnProperty(nameof(TestingTaskPageModel.Id))
                         {
                             Title = T("Admin.Common.Delete").Text,
                             Width = "150",
-                            ClassName =  NopColumnClassDefaults.Button,
+                            ClassName = NopColumnClassDefaults.Button,
                             Render = new RenderButtonRemove(T("Admin.Common.Delete").Text)
                         }
                     }
@@ -59,12 +59,12 @@
             <div>
                 <button type="submit" id="refreshPagesList" style="display: none;"></button>
                 <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#refreshPagesList').click(function () {
-                            updateTable('#testing-task-pages-grid');
-                            return false;
-                        });
-                    });
+                                    $(document).ready(function () {
+                                        $('#refreshPagesList').click(function () {
+                                            updateTable('#testing-task-pages-grid');
+                                            return false;
+                                        });
+                                    });
                 </script>
             </div>
         </div>

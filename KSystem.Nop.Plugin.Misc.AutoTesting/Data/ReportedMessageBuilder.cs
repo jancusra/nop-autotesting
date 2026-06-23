@@ -8,7 +8,7 @@
     using global::Nop.Data.Mapping.Builders;
 
     /// <summary>
-    /// Represents a Reported message entity builder
+    /// Represents a reported message entity builder
     /// </summary>
     public class ReportedMessageBuilder : NopEntityBuilder<ReportedMessage>
     {

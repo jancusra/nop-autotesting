@@ -44,13 +44,13 @@
             _fulltextSearchMode = 10;
         }
 
-        public virtual async Task<(IPagedList<Product> products, 
+        public virtual async Task<(IPagedList<Product> products,
             IList<int> filterableSpecificationAttributeOptionIds,
             IList<int> filterableManufacturerIds,
             string filterableSpecificationAttributeOptionIdsWithCounts,
             string filterableManufacturerIdsWithCounts,
             string minMaxPriceProductIds,
-            IList<int> categoriesByProductsOrKeywords)> 
+            IList<int> categoriesByProductsOrKeywords)>
             SearchProductsAsync(
             bool loadMinMaxPriceProductIds = false,
             bool loadFilterableSpecificationAttributeOptionIds = false,

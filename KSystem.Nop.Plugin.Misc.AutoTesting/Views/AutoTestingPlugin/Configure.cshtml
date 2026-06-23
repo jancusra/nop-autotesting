@@ -26,8 +26,10 @@
         <div class="container-fluid">
             <div class="form-horizontal">
                 <nop-cards id="auto-testing-plugin-cards">
-                    <nop-card asp-name="configure-robot" asp-icon="fas fa-robot" asp-title="@T("KSystem.Nop.Plugin.Misc.AutoTesting.AutoTestingRobot")"
-                              asp-hide-block-attribute-name="panel-robot" asp-hide="false" asp-advanced="false">@await Html.PartialAsync("_Configure.Robot", Model)
+                    <nop-card asp-name="configure-robot" asp-icon="fas fa-robot"
+                              asp-title="@T("KSystem.Nop.Plugin.Misc.AutoTesting.AutoTestingRobot")"
+                              asp-hide-block-attribute-name="panel-robot" asp-hide="false" asp-advanced="false">@await
+                        Html.PartialAsync("_Configure.Robot", Model)
                     </nop-card>
                 </nop-cards>
             </div>

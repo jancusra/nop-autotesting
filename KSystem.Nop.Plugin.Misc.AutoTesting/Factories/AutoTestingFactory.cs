@@ -95,7 +95,7 @@
         }
 
         /// <summary>
-        /// Prepare some event section model (with all commands inside a section)
+        /// Prepare an event section model (with all commands inside a section)
         /// </summary>
         /// <param name="startCommandType">command type for a section start</param>
         /// <param name="endCommandType">command type for a section end</param>
@@ -151,7 +151,7 @@
         }
 
         /// <summary>
-        /// Prepare models for a base testing commands (defined before a events)
+        /// Prepare models for the base testing commands (defined before the events)
         /// </summary>
         /// <param name="testingModel">model to fill by this method as a result</param>
         /// <param name="testingTaskPageMap">Testing task-page map entity</param>

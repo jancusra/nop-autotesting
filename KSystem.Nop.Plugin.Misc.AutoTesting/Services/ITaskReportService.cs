@@ -12,7 +12,7 @@
     public interface ITaskReportService
     {
         /// <summary>
-        /// Get excuted task by identifier
+        /// Get executed task by identifier
         /// </summary>
         /// <param name="executeTaskId">executed task identifier</param>
         /// <returns>executed task</returns>

@@ -131,7 +131,7 @@
         /// <param name="pageSize">number of entries per one page</param>
         /// <returns>paged list of testing task page maps</returns>
         public virtual async Task<IPagedList<TestingTaskPageMap>> GetAllTestingPagesByTaskIdAsync(
-            int testingTaskId, 
+            int testingTaskId,
             int pageIndex = 0,
             int pageSize = int.MaxValue)
         {

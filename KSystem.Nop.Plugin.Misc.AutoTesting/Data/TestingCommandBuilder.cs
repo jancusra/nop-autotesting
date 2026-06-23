@@ -8,7 +8,7 @@
     using global::Nop.Data.Mapping.Builders;
 
     /// <summary>
-    /// Represents a Testing command entity builder
+    /// Represents a testing command entity builder
     /// </summary>
     public class TestingCommandBuilder : NopEntityBuilder<TestingCommand>
     {

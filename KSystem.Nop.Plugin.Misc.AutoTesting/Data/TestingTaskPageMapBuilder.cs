@@ -8,7 +8,7 @@
     using global::Nop.Data.Mapping.Builders;
 
     /// <summary>
-    /// Represents a Testing task page map builder
+    /// Represents a testing task page map builder
     /// </summary>
     public class TestingTaskPageMapBuilder : NopEntityBuilder<TestingTaskPageMap>
     {

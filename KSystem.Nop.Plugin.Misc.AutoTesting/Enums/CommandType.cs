@@ -6,27 +6,27 @@
     public enum CommandType
     {
         /// <summary>
-        /// Check if specific elements exists
+        /// Check whether specific elements exist
         /// </summary>
         ElementsExists = 10,
 
         /// <summary>
-        /// Check if specific elements exists in defined count
+        /// Check whether specific elements exist in a defined count
         /// </summary>
         ElementsExistsInCount = 11,
 
         /// <summary>
-        /// Check if specific element has class
+        /// Check whether a specific element has a class
         /// </summary>
         ElementHasClass = 16,
 
         /// <summary>
-        /// Check if element has specific property
+        /// Check whether an element has a specific property
         /// </summary>
         ElementProperty = 18,
 
         /// <summary>
-        /// Click action to defined target
+        /// Click action on a defined target
         /// </summary>
         Click = 20,
 
@@ -51,7 +51,7 @@
         ChangeDropDownToSomeValue = 41,
 
         /// <summary>
-        /// Switch to next page in testing scenario
+        /// Switch to the next page in the testing scenario
         /// </summary>
         SwitchToNextPage = 400,
 
@@ -61,12 +61,12 @@
         SendReportToServer = 401,
 
         /// <summary>
-        /// Remove all items in shopping cart for current user
+        /// Remove all items in the shopping cart for the current user
         /// </summary>
         ClearShoppingCart = 410,
 
         /// <summary>
-        /// Delete the last profile address created by testing task
+        /// Delete the last profile address created by the testing task
         /// </summary>
         DeleteLastProfileAddress = 420,
 

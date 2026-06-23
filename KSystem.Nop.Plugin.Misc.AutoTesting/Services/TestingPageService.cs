@@ -86,10 +86,10 @@
         }
 
         /// <summary>
-        /// Get parameter URL delimeter by actual address
+        /// Get the parameter URL delimiter by the actual address
         /// </summary>
         /// <param name="testingUrl">actual testing URL address</param>
-        /// <returns>parameter delimeter</returns>
+        /// <returns>parameter delimiter</returns>
         public virtual string GetTestingUrlParameterDelimeter(string testingUrl)
         {
             if (testingUrl.Contains("?"))
@@ -168,7 +168,7 @@
         /// <param name="pageSize">number of entries per one page</param>
         /// <returns>paged list of testing commands</returns>
         public virtual async Task<IPagedList<TestingCommand>> GetAllTestingCommandsByPageIdAsync(
-            int testingPageId, 
+            int testingPageId,
             int pageIndex = 0,
             int pageSize = int.MaxValue)
         {

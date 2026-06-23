@@ -8,9 +8,9 @@
         {
             <text>
                 if ($('@Html.Raw(Model.Selector)').length > 0) {
-                    window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                window.autoTestingReports.push({ message: '@Model.Message', success: true });
                 } else {
-                    window.autoTestingReports.push({ message: '@Model.Message', success: false });
+                window.autoTestingReports.push({ message: '@Model.Message', success: false });
                 }
             </text>
             break;
@@ -19,9 +19,9 @@
         {
             <text>
                 if ($('@Html.Raw(Model.Selector)').length == parseInt('@Model.Value')) {
-                    window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                window.autoTestingReports.push({ message: '@Model.Message', success: true });
                 } else {
-                    window.autoTestingReports.push({ message: '@Model.Message', success: false });
+                window.autoTestingReports.push({ message: '@Model.Message', success: false });
                 }
             </text>
             break;
@@ -30,13 +30,13 @@
         {
             <text>
                 if ('@Model.Selector' == "target") {
-                    if ($(e.target).hasClass('@Html.Raw(Model.Value)')) {
-                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
-                    }
+                if ($(e.target).hasClass('@Html.Raw(Model.Value)')) {
+                window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                }
                 } else {
-                    if ($('@Html.Raw(Model.Selector)').hasClass('@Html.Raw(Model.Value)')) {
-                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
-                    }
+                if ($('@Html.Raw(Model.Selector)').hasClass('@Html.Raw(Model.Value)')) {
+                window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                }
                 }
             </text>
             break;
@@ -45,13 +45,13 @@
         {
             <text>
                 if ('@Model.Selector' == "target") {
-                    if ($(e.target).prop('@Html.Raw(Model.Name)').toLowerCase() == '@Html.Raw(Model.Value)') {
-                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
-                    }
+                if ($(e.target).prop('@Html.Raw(Model.Name)').toLowerCase() == '@Html.Raw(Model.Value)') {
+                window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                }
                 } else {
-                    if ($('@Html.Raw(Model.Selector)').prop('@Html.Raw(Model.Name)').toLowerCase() == '@Html.Raw(Model.Value)') {
-                        window.autoTestingReports.push({ message: '@Model.Message', success: true });
-                    }
+                if ($('@Html.Raw(Model.Selector)').prop('@Html.Raw(Model.Name)').toLowerCase() == '@Html.Raw(Model.Value)') {
+                window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                }
                 }
             </text>
             break;
@@ -60,7 +60,7 @@
         {
             <text>
                 if ($('@Html.Raw(Model.Selector)').length > 0) {
-                    $('@Html.Raw(Model.Selector)').click();
+                $('@Html.Raw(Model.Selector)').click();
                 }
             </text>
             break;
@@ -75,9 +75,9 @@
     case CommandType.ValidateInput:
         {
             <text>
-                if ($('@Html.Raw(Model.Selector)').length > 0 
-                    && $('@Html.Raw(Model.Selector)').val() == '@Html.Raw(Model.Value)') {
-                    window.autoTestingReports.push({ message: '@Model.Message', success: true });
+                if ($('@Html.Raw(Model.Selector)').length > 0
+                && $('@Html.Raw(Model.Selector)').val() == '@Html.Raw(Model.Value)') {
+                window.autoTestingReports.push({ message: '@Model.Message', success: true });
                 }
             </text>
             break;
@@ -102,12 +102,12 @@
         {
             <text>
                 if ($('@Html.Raw(Model.Selector)').length > 0 && !$('@Html.Raw(Model.Selector)').val()) {
-                    $("@Html.Raw(Model.Selector) option").each(function () {
-                        if (this.value) {
-                            $('@Html.Raw(Model.Selector)').val(this.value).change();
-                            return false;
-                        }
-                    });
+                $("@Html.Raw(Model.Selector) option").each(function () {
+                if (this.value) {
+                $('@Html.Raw(Model.Selector)').val(this.value).change();
+                return false;
+                }
+                });
                 }
             </text>
             break;
@@ -118,11 +118,11 @@
             {
                 <text>
                     setTimeout(function () {
-                        $.post(window.location.origin + "/AutoTesting/SaveTestingPageReportMessages", 
-                            { pageId: parseInt('@Model.PageId'), reports: window.autoTestingReports }, 
-                            function (data) {
-                                location.href = '@Html.Raw(Model.Selector)';
-                            });
+                    $.post(window.location.origin + "/AutoTesting/SaveTestingPageReportMessages",
+                    { pageId: parseInt('@Model.PageId'), reports: window.autoTestingReports },
+                    function (data) {
+                    location.href = '@Html.Raw(Model.Selector)';
+                    });
                     }, 1000);
                 </text>
             }
@@ -132,9 +132,9 @@
         {
             <text>
                 setTimeout(function () {
-                    $.post(window.location.origin + "/AutoTesting/SaveTestingPageReportMessages", 
-                        { pageId: parseInt('@Model.PageId'), reports: window.autoTestingReports }, 
-                        function (data) { });
+                $.post(window.location.origin + "/AutoTesting/SaveTestingPageReportMessages",
+                { pageId: parseInt('@Model.PageId'), reports: window.autoTestingReports },
+                function (data) { });
                 }, 1000);
             </text>
             break;
@@ -143,8 +143,8 @@
         {
             <text>
                 setTimeout(function () {
-                    $.post(window.location.origin + "/AutoTesting/ClearShoppingCart", 
-                        function (data) { });
+                $.post(window.location.origin + "/AutoTesting/ClearShoppingCart",
+                function (data) { });
                 }, 1000);
             </text>
             break;
@@ -153,8 +153,8 @@
         {
             <text>
                 setTimeout(function () {
-                    $.post(window.location.origin + "/AutoTesting/DeleteLastProfileAddress", 
-                        function (data) { });
+                $.post(window.location.origin + "/AutoTesting/DeleteLastProfileAddress",
+                function (data) { });
                 }, 1000);
             </text>
             break;

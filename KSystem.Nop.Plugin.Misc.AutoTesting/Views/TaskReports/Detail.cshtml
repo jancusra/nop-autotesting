@@ -13,16 +13,18 @@
     <div class="content-header clearfix">
         <h1 class="float-left">
             @T("KSystem.Nop.Plugin.Misc.AutoTesting.TaskReportDetail") - @Model.TaskName
-            <small><i class="fa fa-arrow-circle-left"></i>@Html.ActionLink(T("KSystem.Nop.Plugin.Misc.AutoTesting.BackToList").Text, "List")</small>
-        </h1>
-        <div class="float-right">
-            <span id="taskreports-delete" class="btn bg-red">
-                <i class="fas fa-trash"></i>
-                @T("Admin.Common.Delete")
-            </span>
+            <small><i
+                class="fa fa-arrow-circle-left"></i>@Html.ActionLink(T("KSystem.Nop.Plugin.Misc.AutoTesting.BackToList").Text,
+                      "List")</small>
+            </h1>
+            <div class="float-right">
+                <span id="taskreports-delete" class="btn bg-red">
+                    <i class="fas fa-trash"></i>
+                    @T("Admin.Common.Delete")
+                </span>
+            </div>
         </div>
-    </div>
-    @await Html.PartialAsync("_ListOfMessages", Model.MessageSearchModel)
-</form>
+        @await Html.PartialAsync("_ListOfMessages", Model.MessageSearchModel)
+    </form>
 
-<nop-delete-confirmation asp-model-id="@Model.Id" asp-button-id="taskreports-delete" />
+    <nop-delete-confirmation asp-model-id="@Model.Id" asp-button-id="taskreports-delete" />

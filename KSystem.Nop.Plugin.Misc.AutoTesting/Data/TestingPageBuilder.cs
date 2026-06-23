@@ -7,7 +7,7 @@
     using global::Nop.Data.Mapping.Builders;
 
     /// <summary>
-    /// Represents a Testing page entity builder
+    /// Represents a testing page entity builder
     /// </summary>
     public class TestingPageBuilder : NopEntityBuilder<TestingPage>
     {
@@ -17,7 +17,7 @@
         /// <param name="table">Create table expression builder</param>
         public override void MapEntity(CreateTableExpressionBuilder table)
         {
-            
+
         }
     }
 }

@@ -14,7 +14,7 @@
         {
             //// {0} is the action, {1} is controller, {2} is area
 
-            var controllers = new string[] { 
+            var controllers = new string[] {
                 "AutoTestingPlugin",
                 "TaskReports",
                 "TestingCommands",

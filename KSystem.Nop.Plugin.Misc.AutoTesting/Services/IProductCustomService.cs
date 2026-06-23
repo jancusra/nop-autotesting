@@ -17,7 +17,7 @@
             string filterableSpecificationAttributeOptionIdsWithCounts,
             string filterableManufacturerIdsWithCounts,
             string minMaxPriceProductIds,
-            IList<int> categoriesByProductsOrKeywords)> 
+            IList<int> categoriesByProductsOrKeywords)>
             SearchProductsAsync(
             bool loadMinMaxPriceProductIds = false,
             bool loadFilterableSpecificationAttributeOptionIds = false,

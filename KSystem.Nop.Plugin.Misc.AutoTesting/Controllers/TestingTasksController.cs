@@ -212,7 +212,8 @@
 
             if (testingTaskPageMap != null)
             {
-                await _taskReportService.SaveExecutedTaskEntryAsync(new ExecutedTask {
+                await _taskReportService.SaveExecutedTaskEntryAsync(new ExecutedTask
+                {
                     TaskId = testingTaskPageMap.TaskId,
                     LastRun = DateTime.Now
                 });

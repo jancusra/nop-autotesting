@@ -106,13 +106,13 @@
     @if (ViewBag.RefreshPage == true)
     {
         <script type="text/javascript">
-            var refreshButton = window.opener.document.getElementById('@(Context.Request.Query["btnId"])');
+                var refreshButton = window.opener.document.getElementById('@(Context.Request.Query["btnId"])');
 
-            if (typeof (refreshButton) != 'undefined' && refreshButton != null) {
-                refreshButton.click();
-            }
+                if (typeof (refreshButton) != 'undefined' && refreshButton != null) {
+                    refreshButton.click();
+                }
 
-            window.close();
+                window.close();
         </script>
     }
 </form>

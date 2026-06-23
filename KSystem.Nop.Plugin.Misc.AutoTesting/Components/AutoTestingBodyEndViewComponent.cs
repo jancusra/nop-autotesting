@@ -13,7 +13,7 @@
     using global::Nop.Web.Framework.Infrastructure;
 
     /// <summary>
-    /// Represents view component to inject auto testing javascript code
+    /// Represents the view component to inject auto testing JavaScript code
     /// </summary>
     [ViewComponent(Name = "AutoTestingBodyEnd")]
     public class AutoTestingBodyEndViewComponent : NopViewComponent

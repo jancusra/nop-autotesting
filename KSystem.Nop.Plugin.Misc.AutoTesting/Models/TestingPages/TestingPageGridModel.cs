@@ -3,6 +3,6 @@
     using global::Nop.Web.Framework.Models;
 
     public record TestingPageGridModel : BasePagedListModel<TestingPageModel>
-    {       
+    {
     }
 }

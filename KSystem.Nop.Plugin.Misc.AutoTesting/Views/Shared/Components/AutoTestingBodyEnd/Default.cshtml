@@ -10,11 +10,11 @@
     <script type="text/javascript" asp-location="Footer">
         window.onload = function () {
             setTimeout(function () {
-                @foreach (var baseTestingCommand in Model.BaseTestingCommands)
-                {
-                    @await Html.PartialAsync("_TestingCommandJs", baseTestingCommand)
-                }
-            }, 1000);
+                    @foreach (var baseTestingCommand in Model.BaseTestingCommands)
+                    {
+                        @await Html.PartialAsync("_TestingCommandJs", baseTestingCommand)
+                    }
+                }, 1000);
         };
     </script>
 }
@@ -23,27 +23,33 @@
 {
     <script type="text/javascript" asp-location="Footer">
         $(document).ajaxComplete(function (event, xhr, settings) {
-        @if (!string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Selector) && !string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Name)
-            && !string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Value))
-            {<text>
-            if (settings.url.includes('@ajaxTestingCommand.BaseCommand.Selector')) {
-                var params = JSON.parse('{"' + decodeURI(settings.data.replace(/&/g, "\",\"").replace(/=/g, "\":\"")) + '"}');
-                if (params && params.hasOwnProperty('@ajaxTestingCommand.BaseCommand.Name')
-                    && params['@ajaxTestingCommand.BaseCommand.Name'] == '@ajaxTestingCommand.BaseCommand.Value') {
-            </text>}
-        else {<text>
-            if (settings.url.includes('@ajaxTestingCommand.BaseCommand.Selector')) {
-                if (true) {
-            </text>}
-                    setTimeout(function () {
-                        @foreach(var testingCommand in ajaxTestingCommand.TestingCommands)
+            @if (!string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Selector) && !string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Name)
+                    && !string.IsNullOrEmpty(ajaxTestingCommand.BaseCommand.Value))
+                {
+                <text>
+                            if (settings.url.includes('@ajaxTestingCommand.BaseCommand.Selector')) {
+                            var params = JSON.parse('{"' + decodeURI(settings.data.replace(/&/g, "\",\"").replace(/=/g, "\":\"")) + '"}');
+                            if (params && params.hasOwnProperty('@ajaxTestingCommand.BaseCommand.Name')
+                            && params['@ajaxTestingCommand.BaseCommand.Name'] == '@ajaxTestingCommand.BaseCommand.Value') {
+                    </text>
+            }
+            else
+            {
+
+                    <text>
+                            if (settings.url.includes('@ajaxTestingCommand.BaseCommand.Selector')) {
+                            if (true) {
+                    </text>
+                }
+                setTimeout(function () {
+                            @foreach (var testingCommand in ajaxTestingCommand.TestingCommands)
                         {
                             @await Html.PartialAsync("_TestingCommandJs", testingCommand)
                         }
-                    }, 1000);
+                        }, 1000);
+        }
                 }
-            }
-        });
+            });
     </script>
 }
 
@@ -51,10 +57,10 @@
 {
     <script type="text/javascript" asp-location="Footer">
         $(document).bind('DOMNodeInserted', function (e) {
-            @foreach(var testingCommand in domNodeInsertedCommand.TestingCommands)
-            {
-                @await Html.PartialAsync("_TestingCommandJs", testingCommand)
-            }
-        });
+                @foreach (var testingCommand in domNodeInsertedCommand.TestingCommands)
+                {
+                    @await Html.PartialAsync("_TestingCommandJs", testingCommand)
+                }
+            });
     </script>
 }

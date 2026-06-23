@@ -68,7 +68,7 @@
         }
 
         /// <summary>
-        /// Install base items for plugin and prepare locale resources
+        /// Install base items for the plugin and prepare locale resources
         /// </summary>
         public override async Task InstallAsync()
         {
@@ -112,7 +112,7 @@
         }
 
         /// <summary>
-        /// Unistall base items for plugin
+        /// Uninstall base items for the plugin
         /// </summary>
         public override async Task UninstallAsync()
         {

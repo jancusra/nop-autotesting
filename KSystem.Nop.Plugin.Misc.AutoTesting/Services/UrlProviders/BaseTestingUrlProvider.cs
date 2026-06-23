@@ -84,7 +84,7 @@
 
                 foreach (var queryParam in queryParams)
                 {
-                    var paramNameValue = queryParam.Split(AutoTestingDefaults.ParameterQueryNameValueSeparator, 
+                    var paramNameValue = queryParam.Split(AutoTestingDefaults.ParameterQueryNameValueSeparator,
                         StringSplitOptions.RemoveEmptyEntries).ToList();
 
                     if (paramNameValue.Count == 2 && paramNameValue[0] == parameterName)

@@ -8,7 +8,7 @@
     using global::Nop.Data.Mapping.Builders;
 
     /// <summary>
-    /// Represents a Executed task entity builder
+    /// Represents an executed task entity builder
     /// </summary>
     public class ExecutedTaskBuilder : NopEntityBuilder<ExecutedTask>
     {

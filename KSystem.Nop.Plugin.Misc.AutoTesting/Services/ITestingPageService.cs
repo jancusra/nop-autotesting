@@ -26,10 +26,10 @@
         Task<string> GetTestingUrlByPageIdAsync(int pageId);
 
         /// <summary>
-        /// Get parameter URL delimeter by actual address
+        /// Get the parameter URL delimiter by the actual address
         /// </summary>
         /// <param name="testingUrl">actual testing URL address</param>
-        /// <returns>parameter delimeter</returns>
+        /// <returns>parameter delimiter</returns>
         string GetTestingUrlParameterDelimeter(string testingUrl);
 
         /// <summary>

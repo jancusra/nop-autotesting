@@ -1,16 +1,16 @@
 # NopCommerce plugin for functional tests (v. 4.60)
 #### [ FULLY FUNCTIONAL, BUT NOT MAINTAINED CODE (ONLY FOR DEMONSTRATION) ]
 
-You can define sets of pages in administration and group them to the task. Every page has group of commands (etc. click to object, fill input, wait for ajax to complete, report if element exist and more ...)  
-If task is defined in administration, can be used after an every deploy to check if everything is working fine (etc. product page and catalog are showed, products are added to the cart, checkout is OK and more ....)  
-Task can run on background and at the end will show final report by defined criteria.  
-Plugin is available with SQL script for some sample data after a clean NopCommerce installation, so you can try him and study without much effort!  
-Principal functionality by injecting javascript and automatic tests by this plugin can be used for any project.  
+You can define sets of pages in the administration area and group them into a task. Every page has a group of commands (e.g. click an object, fill an input, wait for AJAX to complete, report whether an element exists and more ...)  
+Once a task is defined in the administration area, it can be used after every deploy to check whether everything is working fine (e.g. the product page and catalog are shown, products are added to the cart, checkout is OK and more ....)  
+The task can run in the background and, at the end, shows a final report based on the defined criteria.  
+The plugin comes with an SQL script that provides sample data after a clean NopCommerce installation, so you can try it out and study it without much effort!  
+The core functionality — injecting JavaScript and running automated tests with this plugin — can be used in any project.  
 
   
 **Quick guide how to:**
-1. download and install NopCommerce, copy main plugin folder to /src/Plugins
-2. start NopCommerce from source code and install this plugin
-3. run script on database from folder here /KSystem.Nop.Plugin.Misc.AutoTesting/Sql/prepare_plugin_data.sql for some sample data
-4. now you can go to administration and run defined task (see live video preview below)
+1. download and install NopCommerce, then copy the main plugin folder to /src/Plugins
+2. run NopCommerce from the source code and install this plugin
+3. run the script /KSystem.Nop.Plugin.Misc.AutoTesting/Sql/prepare_plugin_data.sql on your database to load some sample data
+4. now you can go to the administration area and run the defined task (see the live video preview below)
 [![LIVE PREVIEW](https://img.youtube.com/vi/z-wg3fwAMlU/0.jpg)](https://www.youtube.com/watch?v=z-wg3fwAMlU)

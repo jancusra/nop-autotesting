@@ -7,13 +7,15 @@
     <div class="container-fluid">
         <div class="form-horizontal">
             <nop-tabs id="testing-pages-edit">
-                <nop-tab asp-name="tab-common" asp-title="@T("Admin.Configuration.Settings.GeneralCommon")" asp-default="true">
+                <nop-tab asp-name="tab-common" asp-title="@T("Admin.Configuration.Settings.GeneralCommon")"
+                         asp-default="true">
                     @await Html.PartialAsync("_CreateOrUpdate.Common", Model)
                 </nop-tab>
 
                 @if (!Model.IsModelCreate)
                 {
-                    <nop-tab asp-name="tab-list-of-pages" asp-title="@T("KSystem.Nop.Plugin.Misc.AutoTesting.TestingPages")">
+                    <nop-tab asp-name="tab-list-of-pages"
+                             asp-title="@T("KSystem.Nop.Plugin.Misc.AutoTesting.TestingPages")">
                         @await Html.PartialAsync("_CreateOrUpdate.Pages", Model.TaskPageSearchModel)
                     </nop-tab>
                 }

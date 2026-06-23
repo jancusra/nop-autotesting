@@ -24,7 +24,7 @@
 
         public Dictionary<(Type, string), string> ColumnName => new Dictionary<(Type, string), string>
         {
-            
+
         };
     }
 }

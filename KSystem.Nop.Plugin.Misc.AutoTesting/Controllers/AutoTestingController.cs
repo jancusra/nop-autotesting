@@ -96,7 +96,7 @@
         [HttpPost]
         public virtual async Task<IActionResult> ClearShoppingCart()
         {
-            var cartItems = await _shoppingCartService.GetShoppingCartAsync(await _workContext.GetCurrentCustomerAsync(), 
+            var cartItems = await _shoppingCartService.GetShoppingCartAsync(await _workContext.GetCurrentCustomerAsync(),
                 ShoppingCartType.ShoppingCart, (await _storeContext.GetCurrentStoreAsync()).Id);
 
             foreach (var cartItem in cartItems)

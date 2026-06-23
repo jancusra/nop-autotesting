@@ -28,7 +28,7 @@
         #region Executed tasks
 
         /// <summary>
-        /// Get excuted task by identifier
+        /// Get executed task by identifier
         /// </summary>
         /// <param name="executeTaskId">executed task identifier</param>
         /// <returns>executed task</returns>
@@ -113,7 +113,7 @@
         /// <returns>paged list of reported messages</returns>
         public virtual async Task<IPagedList<ReportedMessage>> GetAllReportedMessagesByExecutedTaskIdAsync(
             int executeTaskId,
-            int pageIndex = 0, 
+            int pageIndex = 0,
             int pageSize = int.MaxValue)
         {
             return new PagedList<ReportedMessage>(

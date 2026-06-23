@@ -14,7 +14,7 @@
         /// Build administration menu structure
         /// </summary>
         /// <param name="pluginDescriptor">NOP plugin descriptor with data about a plugin</param>
-        /// <returns>Builded menu structure</returns>
+        /// <returns>Built menu structure</returns>
         Task<SiteMapNode> BuildAsync(PluginDescriptor pluginDescriptor);
     }
 }
